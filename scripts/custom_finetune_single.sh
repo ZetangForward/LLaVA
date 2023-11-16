@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deepspeed --hostfile ./scripts/hostfile_v128 \
+deepspeed --hostfile ./scripts/hostfile_single \
     llava/train/train_xformers.py \
     --deepspeed ./scripts/zero3_offload.json \
     --model_name_or_path lmsys/vicuna-7b-v1.5 \
