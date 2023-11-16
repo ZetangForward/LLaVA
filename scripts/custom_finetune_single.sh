@@ -1,6 +1,7 @@
 #!/bin/bash
 
-deepspeed llava/train/train_xformers.py \
+deepspeed --hostfile ./scripts/hostfile_v128 \
+    llava/train/train_xformers.py \
     --deepspeed ./scripts/zero3_offload.json \
     --model_name_or_path lmsys/vicuna-7b-v1.5 \
     --version v1 \
