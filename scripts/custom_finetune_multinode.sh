@@ -19,8 +19,8 @@ deepspeed --hostfile ./scripts/hostfile_v128 \
     --fp16 True \
     --output_dir /zecheng/svg_model_hub/custom_llava_codellama \
     --num_train_epochs 30 \
-    --per_device_train_batch_size 16 \
-    --per_device_eval_batch_size 16 \
+    --per_device_train_batch_size 12 \
+    --per_device_eval_batch_size 12 \
     --gradient_accumulation_steps 1 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
