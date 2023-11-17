@@ -3,7 +3,7 @@
 deepspeed --hostfile ./scripts/hostfile_v128 \
     llava/train/train_xformers.py \
     --deepspeed ./scripts/zero3_offload.json \
-    --model_name_or_path lmsys/vicuna-7b-v1.5 \
+    --model_name_or_path /zecheng/model_hub/CodeLlama-7b-hf \
     --version v1 \
     --data_path /zecheng/svg/icon-shop/meta_data/svg_to_image/train_llava_image_to_svg.json \
     --image_folder /zecheng/svg/icon-shop/meta_data/svg_to_image/rendered_train_image_nc \
