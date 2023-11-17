@@ -17,7 +17,7 @@ deepspeed --hostfile ./scripts/hostfile_v128 \
     --group_by_modality_length True \
     --bf16 False \
     --fp16 True \
-    --output_dir /zecheng/svg_model_hub/custom_llava \
+    --output_dir /zecheng/svg_model_hub/custom_llava_codellama \
     --num_train_epochs 30 \
     --per_device_train_batch_size 16 \
     --per_device_eval_batch_size 16 \
