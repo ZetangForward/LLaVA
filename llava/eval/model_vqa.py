@@ -14,6 +14,7 @@ from llava.mm_utils import tokenizer_image_token, get_model_name_from_path, Keyw
 from PIL import Image
 import math
 
+device_map = {"": 0}
 
 def split_list(lst, n):
     """Split a list into n (roughly) equal-sized chunks"""
@@ -31,7 +32,7 @@ def eval_model(args):
     disable_torch_init()
     model_path = os.path.expanduser(args.model_path)
     model_name = get_model_name_from_path(model_path)
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, args.model_base, model_name)
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, args.model_base, model_name, device_map=device_map)
 
     questions = [json.loads(q) for q in open(os.path.expanduser(args.question_file), "r")]
     questions = get_chunk(questions, args.num_chunks, args.chunk_idx)
@@ -70,8 +71,8 @@ def eval_model(args):
                 temperature=args.temperature,
                 top_p=args.top_p,
                 num_beams=args.num_beams,
-                # no_repeat_ngram_size=3,
-                max_new_tokens=1024,
+                top_k=40,
+                max_new_tokens=2048,
                 use_cache=True)
 
         input_token_len = input_ids.shape[1]
